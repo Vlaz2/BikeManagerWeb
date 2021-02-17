@@ -1,0 +1,67 @@
+<div>
+
+    <div style="font-family: Verdana, sans-serif;font-size: 22px;text-align: center;">
+        Awesome Bike Rental
+    </div>
+
+    <div style="margin-top: 100px;font-family: Verdana, sans-serif;font-size: 16px;margin-bottom: 20px;">
+        Create new rent
+    </div>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <form class="form" [formGroup]="createBikeForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group titleinput">
+                        <label>Title</label>
+                        <input formControlName="title" class="form-control input" placeholder="Enter title">
+                    </div>
+                    <div class="form-group priceinput">
+                        <label>Rent price</label>
+                        <input formControlName="price" class="form-control input" placeholder="Enter price $">
+                    </div>
+                    <div class="form-group selectpriceinput">
+                        <label>Type bike</label>
+                        <select formControlName="typeBikeId" class="form-control input">
+                            <option *ngFor="let type of typeBikeService.typeBikes" [value]="type.id">{{type.title}}
+                            </option>
+                        </select>
+                    </div>
+                    <button [disabled]="!createBikeForm.valid" type="submit"
+                        class="btn btn-primary submitButton">Submit</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div style="margin-top: 100px;font-family: Verdana, sans-serif;font-size: 16px">
+        Available bicycles
+    </div>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Price</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let bike of bikes">
+                <tr>
+                    <td>{{bike.title}}</td>
+                    <td>{{bike.typeBike.title}}</td>
+                    <td>{{bike.price}}</td>
+                    <td style="width: 100px;">
+                        <div>
+                            <button style="margin-left: -100px;" (click)="deleteBike(bike.id)"
+                                class="btn btn-primary submitButton">Delete</button>
+                            <button style="margin-top: 0px;" (click)="changeRentOnBike(bike)"
+                                class="btn btn-primary submitButton">Rent</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

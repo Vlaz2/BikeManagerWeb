@@ -1,0 +1,21 @@
+.titleinput{
+    display:inline-block;
+}
+
+.priceinput{
+    display:inline-block;
+    padding-left: 250px;
+}
+
+.selectpriceinput{
+    display:inline-block;
+    padding-left: 250px;
+}
+
+.submitButton{
+    margin-left: 50px;
+}
+
+.input{
+    width: 170px;
+}
